@@ -1,10 +1,16 @@
+-- Create a nonclustered index called IX_published_date   
+CREATE NONCLUSTERED INDEX IX_published_date   
+    ON example_1.product_prices (published_date);
+
+-- Query to return Product Name, Product Price, Published Date
 WITH cte as (
   SELECT 
       product_id, max(published_date) as max_pub_date
   FROM 
       example_1.product_prices
   WHERE 
-      published_date <= '2022-06-10'
+      product_id in (100,200,300,400)
+      AND published_date <= '2022-06-10'
   GROUP BY 
       product_id
 )
@@ -21,5 +27,5 @@ JOIN
     cte c ON p.id = c.product_id
     AND pp.published_date = c.max_pub_date
 WHERE
-    p.product_id IN (100,200,300,400)
+    p.id IN (100,200,300,400)
     
