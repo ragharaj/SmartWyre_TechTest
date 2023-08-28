@@ -3,6 +3,9 @@
 
 -- Creating a index on organisation id for query performance
 
+CREATE NONCLUSTERED INDEX IX_org_id   
+    ON example_4.transactions (organization_id);
+
 -- Query usage
 SELECT 
   organization_id, 
