@@ -1,0 +1,13 @@
+-- GROUP BY organisation_id
+-- This Should give list of unique organisation ids in the table
+
+-- Creating a index on organisation id for query performance
+
+-- Query usage
+SELECT 
+  organization_id, 
+  count(id)
+FROM
+  example_4.transactions
+GROUP BY
+  organization_id
